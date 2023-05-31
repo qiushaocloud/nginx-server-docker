@@ -1,0 +1,14 @@
+version: "3"
+services:
+  qiushaocloud-nginx-server:
+    image: qiushaocloud/nginx-server
+    container_name: qiushaocloud-nginx-server
+    hostname: qiushaocloud-nginx-server
+    network_mode: "host"
+    volumes:
+      - ./conf.d/nginx.conf:/usr/local/nginx/conf/nginx.conf
+      - ./other.d:/usr/local/nginx/conf/other.d
+      - ./tcp.d:/usr/local/nginx/conf/tcp.d
+      - ./udp.d:/usr/local/nginx/conf/udp.d
+      - ./domain.d:/usr/local/nginx/conf/domain.d
+      - ./ssl:/usr/local/nginx/ssl

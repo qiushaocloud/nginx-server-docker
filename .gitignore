@@ -1,0 +1,8 @@
+/.DS_Store
+/.idea
+
+.env
+.env.swp
+
+ssl/*
+!ssl/test.local_certs
