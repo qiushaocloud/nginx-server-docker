@@ -5,6 +5,7 @@ services:
     container_name: qiushaocloud-nginx-server
     hostname: qiushaocloud-nginx-server
     network_mode: "host"
+    # command: /usr/local/bootstrap.sh
     volumes:
       - ./conf.d/nginx.conf:/usr/local/nginx/conf/nginx.conf
       - ./other.d:/usr/local/nginx/conf/other.d
@@ -12,3 +13,4 @@ services:
       - ./udp.d:/usr/local/nginx/conf/udp.d
       - ./domain.d:/usr/local/nginx/conf/domain.d
       - ./ssl:/usr/local/nginx/ssl
+      - ./bootstrap.sh:/usr/local/bootstrap.sh

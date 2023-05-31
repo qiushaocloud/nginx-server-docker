@@ -23,5 +23,4 @@ COPY ./udp.d /usr/local/nginx/conf/udp.d
 
 WORKDIR /usr/local/nginx
 
-# CMD ["/usr/local/bootstrap.sh"]
-CMD /usr/local/nginx/sbin/nginx
+CMD ["/usr/local/bootstrap.sh"]
