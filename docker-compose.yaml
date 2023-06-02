@@ -14,4 +14,4 @@ services:
       - ./udp.d:/usr/local/nginx/conf/udp.d
       - ./domain.d:/usr/local/nginx/conf/domain.d
       - ./ssl:/usr/local/nginx/ssl
-      - ./bootstrap.sh:/usr/local/bootstrap.sh
+      # - ./bootstrap.sh:/usr/local/bootstrap.sh
