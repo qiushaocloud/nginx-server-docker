@@ -9,7 +9,7 @@ RUN cd /usr/local \
     && tar -zxvf nginx-1.21.4.tar.gz \
     && rm -rf nginx-1.21.4.tar.gz \
     && cd nginx-1.21.4 \
-    && ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_realip_module --with-http_v2_module --with-stream --with-stream_ssl_module \
+    && ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_realip_module --with-http_v2_module --with-stream --with-stream_ssl_module --with-http_sub_module \
     && make \
     && make install \
     && chmod 777 /usr/local/bootstrap.sh
