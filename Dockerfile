@@ -2,13 +2,13 @@ FROM qiushaocloud/os-ubuntu-1604
 
 RUN apt-get update && apt-get install -y gcc automake autoconf libtool make zlib1g zlib1g-dev openssl libssl-dev libpcre3 libpcre3-dev
 
-COPY ./nginx-1.21.4.tar.gz /usr/local/nginx-1.21.4.tar.gz
+COPY ./nginx-1.28.0.tar.gz /usr/local/nginx-1.28.0.tar.gz
 COPY ./bootstrap.sh /usr/local/bootstrap.sh
 
 RUN cd /usr/local \
-    && tar -zxvf nginx-1.21.4.tar.gz \
-    && rm -rf nginx-1.21.4.tar.gz \
-    && cd nginx-1.21.4 \
+    && tar -zxvf nginx-1.28.0.tar.gz \
+    && rm -rf nginx-1.28.0.tar.gz \
+    && cd nginx-1.28.0 \
     && ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_realip_module --with-http_v2_module --with-stream --with-stream_ssl_module --with-http_sub_module \
     && make \
     && make install \
