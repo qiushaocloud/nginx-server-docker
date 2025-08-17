@@ -1,7 +1,7 @@
 stages:
   - sync-code
-  - build
-  - deploy
+  # - build
+  # - deploy
 
 sync-code:
   stage: sync-code
@@ -20,23 +20,21 @@ sync-code:
   tags:
     - qiushaocloud-runner
 
-build:
-  stage: build
-  only:
-    - master
-  script:
-    - docker build -t qiushaocloud/nginx-server:latest .
-  tags:
-    - qiushaocloud-runner
+# build:
+#   stage: build
+#   only:
+#     - master
+#   script:
+#     - docker build -t qiushaocloud/nginx-server:latest .
+#   tags:
+#     - qiushaocloud-runner
 
-deploy:
-  stage: deploy
-  only:
-    - master
-  script:
-    - echo HTTP_PROXY:$HTTP_PROXY
-    - echo cat /etc/hosts
-    - docker login --username $DOCKER_HUB_USER_NAME --password $DOCKER_HUB_USER_PASSWORD
-    - docker push qiushaocloud/nginx-server:latest
-  tags:
-    - qiushaocloud-runner
+# deploy:
+#   stage: deploy
+#   only:
+#     - master
+#   script:
+#     - docker login --username $DOCKER_HUB_USER_NAME --password $DOCKER_HUB_USER_PASSWORD
+#     - docker push qiushaocloud/nginx-server:latest
+#   tags:
+#     - qiushaocloud-runner
