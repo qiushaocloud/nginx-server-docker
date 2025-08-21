@@ -2,6 +2,12 @@ FROM qiushaocloud/os-ubuntu-1604
 
 RUN apt-get update && apt-get install -y gcc automake autoconf libtool make zlib1g zlib1g-dev openssl libssl-dev libpcre3 libpcre3-dev
 
+RUN apt-get update \
+    && apt-get install -y software-properties-common \
+    && add-apt-repository -y "deb http://openresty.org/package/ubuntu $(lsb_release -sc) main" \
+    && wget -qO - https://openresty.org/package/pubkey.gpg | apt-key add -
+RUN apt-get update && apt-get install -y openresty
+
 COPY ./nginx-1.28.0.tar.gz /usr/local/nginx-1.28.0.tar.gz
 COPY ./bootstrap.sh /usr/local/bootstrap.sh
 
@@ -9,7 +15,7 @@ RUN cd /usr/local \
     && tar -zxvf nginx-1.28.0.tar.gz \
     && rm -rf nginx-1.28.0.tar.gz \
     && cd nginx-1.28.0 \
-    && ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_realip_module --with-http_v2_module --with-stream --with-stream_ssl_module --with-http_sub_module --with-http_set_misc_module \
+    && ./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module --with-http_realip_module --with-http_v2_module --with-stream --with-stream_ssl_module --with-http_sub_module \
     && make \
     && make install \
     && chmod 777 /usr/local/bootstrap.sh
